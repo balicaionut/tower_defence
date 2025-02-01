@@ -1,0 +1,15 @@
+# Godot-specific
+.godot/
+
+# Version control
+.gitattributes
+
+# OS-specific
+Thumbs.db         # Windows
+ehthumbs.db       # Windows
+
+# Temporary or build
+
+# Sensitive
+
+# Other
