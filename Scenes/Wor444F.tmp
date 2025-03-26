@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dx0r5p0gppcj"]
+[gd_scene load_steps=15 format=3 uid="uid://dx0r5p0gppcj"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_pph8o"]
 [ext_resource type="PackedScene" uid="uid://kplpmko07ai" path="res://Tiles/TileCornerSquare.tscn" id="1_xme7v"]
@@ -7,9 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://uakhy7tk3pj1" path="res://Tiles/TileEnd.tscn" id="4_syrne"]
 [ext_resource type="PackedScene" uid="uid://cc0xj3h152ii1" path="res://Tiles/TileGrass.tscn" id="5_mst2w"]
 [ext_resource type="ArrayMesh" uid="uid://b3qw7hyd2w3lx" path="res://Models/woodStructure.obj" id="7_jnqh3"]
-[ext_resource type="ArrayMesh" uid="uid://b31vidy74r6x2" path="res://Models/towerRound_sampleF.obj" id="7_xuhtu"]
 [ext_resource type="Material" uid="uid://de3b8b1lrhhdq" path="res://Materials/green.tres" id="8_8wb1j"]
-[ext_resource type="PackedScene" uid="uid://d0qbox0lpsr5x" path="res://Scenes/health_bar_3d.tscn" id="8_khpg2"]
 [ext_resource type="Texture2D" uid="uid://5kksnhtrkwug" path="res://Materials/weapon_cannon_S.png" id="9_u67ul"]
 
 [sub_resource type="Curve3D" id="Curve3D_kpiu8"]
@@ -26,7 +24,7 @@ background_color = Color(0.10714, 0.256663, 0.273327, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6yic"]
 content_margin_left = 10.0
 content_margin_top = 10.0
-content_margin_right = 10.0
+content_margin_right = 100.0
 content_margin_bottom = 10.0
 bg_color = Color(0.367433, 0.439826, 0.519167, 1)
 border_width_left = 2
@@ -38,7 +36,7 @@ border_blend = true
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wfhx"]
 content_margin_left = 10.0
 content_margin_top = 10.0
-content_margin_right = 10.0
+content_margin_right = 100.0
 content_margin_bottom = 10.0
 bg_color = Color(0.295369, 0.358909, 0.428471, 1)
 border_width_left = 2
@@ -50,7 +48,7 @@ border_blend = true
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhhpc"]
 content_margin_left = 10.0
 content_margin_top = 10.0
-content_margin_right = 10.0
+content_margin_right = 100.0
 content_margin_bottom = 10.0
 bg_color = Color(0.259185, 0.317303, 0.380904, 1)
 border_width_left = 2
@@ -229,22 +227,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -6.5)
 [node name="TileGrass11" parent="Map" instance=ExtResource("5_mst2w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 1.5)
 
-[node name="TowerRoundSampleF" type="MeshInstance3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.477398, 0.16636, -9.49455)
-mesh = ExtResource("7_xuhtu")
-skeleton = NodePath("../..")
-
-[node name="HealthBar3D" parent="Map/TowerRoundSampleF" instance=ExtResource("8_khpg2")]
-transform = Transform3D(0.564161, 0, 0, 0, 0.761961, 0, 0, 0, 1.20757, -0.00958157, 1.74746, 0.151816)
-
 [node name="Path" type="Path3D" parent="."]
 curve = SubResource("Curve3D_kpiu8")
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.30533e-08, -0.866418, 0.499319, 7.5566e-09, 0.499319, 0.866418, -1, 4.10753e-08, -1.49502e-08, 6.5412, 6.98145, -4)
-fov = 55.5012
+transform = Transform3D(-4.37114e-08, -0.939693, 0.34202, 0, 0.34202, 0.939693, -1, 4.10753e-08, -1.49502e-08, 5, 8, -4)
+fov = 51.9
 near = 0.025
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
@@ -272,6 +262,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ShopPanel" type="Panel" parent="CanvasLayer/UI"]
+visible = false
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
 anchors_preset = 11
@@ -296,7 +287,7 @@ focus_mode = 0
 theme_override_styles/hover = SubResource("StyleBoxFlat_c6yic")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2wfhx")
 theme_override_styles/normal = SubResource("StyleBoxFlat_mhhpc")
-text = "0 Gold"
+text = "250 Gold"
 alignment = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/ShopPanel/VBoxContainer/CannonButton"]
@@ -307,51 +298,5 @@ grow_vertical = 2
 texture = ExtResource("9_u67ul")
 expand_mode = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer/UI/ShopPanel/VBoxContainer"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="CancelButton" type="Button" parent="CanvasLayer/UI/ShopPanel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-focus_mode = 0
-theme_override_styles/hover = SubResource("StyleBoxFlat_c6yic")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_2wfhx")
-theme_override_styles/normal = SubResource("StyleBoxFlat_mhhpc")
-text = "Cancel"
-
-[node name="NextWaveButton" type="Button" parent="CanvasLayer/UI"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 0
-offset_left = 10.0
-offset_top = 584.0
-offset_right = 210.0
-offset_bottom = 634.0
-text = "Next Wave"
-
-[node name="Gold" type="Label" parent="CanvasLayer/UI"]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 13.0
-offset_right = 169.0
-offset_bottom = 62.0
-theme_override_font_sizes/font_size = 32
-text = "Gold: 250"
-vertical_alignment = 1
-
-[node name="Wave" type="Label" parent="CanvasLayer/UI"]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 62.0
-offset_right = 169.0
-offset_bottom = 111.0
-theme_override_font_sizes/font_size = 32
-text = "Wave: 0"
-vertical_alignment = 1
-
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/UI/ShopPanel/VBoxContainer/CannonButton" to="." method="_on_cannon_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/UI/ShopPanel/VBoxContainer/CancelButton" to="." method="_on_cannon_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/UI/ShopPanel/VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/UI/NextWaveButton" to="." method="_on_next_wave_button_pressed"]

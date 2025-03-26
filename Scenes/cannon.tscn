@@ -10,7 +10,7 @@ size = Vector3(1, 0.0967407, 1)
 radius = 1.5
 
 [node name="Cannon" type="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.17631, 0.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0.17631, 0.5)
 script = ExtResource("1_05rjv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
